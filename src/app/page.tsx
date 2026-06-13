@@ -10,18 +10,18 @@ interface Account {
 }
 
 const ACTION_BUTTONS = [
-  { icon: "↑", label: "Перевод" },
-  { icon: "↓", label: "Пополнить" },
-  { icon: "⊞", label: "Платежи" },
-  { icon: "◎", label: "QR-оплата" },
+  { icon: "↑", label: "O'tkazma" },
+  { icon: "↓", label: "To'ldirish" },
+  { icon: "⊞", label: "To'lovlar" },
+  { icon: "◎", label: "QR-to'lov" },
 ];
 
 const QUICK_ACTIONS = [
-  { icon: "📱", label: "Связь" },
-  { icon: "🏠", label: "ЖКХ" },
-  { icon: "🎮", label: "Игры" },
-  { icon: "✈️", label: "Авиа" },
-  { icon: "🛍️", label: "Маркет" },
+  { icon: "📱", label: "Aloqa" },
+  { icon: "🏠", label: "Kommunal" },
+  { icon: "🎮", label: "O'yinlar" },
+  { icon: "✈️", label: "Aviabilet" },
+  { icon: "🛍️", label: "Bozor" },
 ];
 
 
@@ -72,7 +72,7 @@ export default function Home() {
       {/* Header */}
       <div style={s.header}>
         <div>
-          <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 2 }}>Добро пожаловать</div>
+          <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 2 }}>Xush kelibsiz</div>
           <div style={{ fontSize: 18, fontWeight: 700 }}>{account?.name ?? "..."}</div>
         </div>
         <div style={s.avatar}>👤</div>
@@ -124,7 +124,7 @@ export default function Home() {
                   marginBottom: 12,
                 }}
               >
-                Основной счёт
+                Asosiy hisob
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                 <div
@@ -132,7 +132,7 @@ export default function Home() {
                 >
                   {balanceVisible
                     ? account
-                      ? `${formatBalance(account.balance)} ₽`
+                      ? `${formatBalance(account.balance)} сум`
                       : "..."
                     : "•••• ••"}
                 </div>
@@ -167,7 +167,7 @@ export default function Home() {
                 }}
               >
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>
-                  Нажми для деталей →
+                  Batafsil →
                 </div>
                 <div
                   style={{
@@ -218,7 +218,7 @@ export default function Home() {
       {/* Quick Actions */}
       <div style={{ padding: "0 20px", marginBottom: 28 }}>
         <div style={{ fontSize: 14, fontWeight: 700, color: "#c4b5fd", marginBottom: 14 }}>
-          Быстрые платежи
+          Tezkor to'lovlar
         </div>
         <div style={{ display: "flex", gap: 12, overflowX: "auto", paddingBottom: 4 }}>
           {QUICK_ACTIONS.map((a) => (
@@ -267,11 +267,11 @@ export default function Home() {
         }}
       >
         {[
-          { icon: "⊞", label: "Главная", active: true },
-          { icon: "💳", label: "Карты" },
-          { icon: "📊", label: "Аналитика" },
-          { icon: "💬", label: "Чат" },
-          { icon: "☰", label: "Ещё" },
+          { icon: "⊞", label: "Bosh", active: true },
+          { icon: "💳", label: "Kartalar" },
+          { icon: "📊", label: "Tahlil" },
+          { icon: "💬", label: "Chat" },
+          { icon: "☰", label: "Ko'proq" },
         ].map((item) => (
           <button
             key={item.label}

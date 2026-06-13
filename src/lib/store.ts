@@ -27,9 +27,9 @@ function initStore() {
     global.__bankStore = {
       account: {
         id: "main",
-        name: "Алексей Носиков",
+        name: "",
         cardNumber: "4276 8001 1234 5678",
-        balance: 125000,
+        balance: 1250000,
       },
       topupTokens: new Map(),
     };

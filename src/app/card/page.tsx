@@ -101,7 +101,7 @@ export default function CardPage() {
         >
           ←
         </Link>
-        <div style={{ fontSize: 18, fontWeight: 700 }}>Моя карта</div>
+        <div style={{ fontSize: 18, fontWeight: 700 }}>Mening kartam</div>
       </div>
 
       {/* Card visual */}
@@ -178,7 +178,7 @@ export default function CardPage() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
             <div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>
-                Держатель
+                Egasi
               </div>
               <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", filter: "blur(5px)", userSelect: "none" }}>
                 {account?.name?.toUpperCase() ?? "..."}
@@ -186,7 +186,7 @@ export default function CardPage() {
             </div>
             <div style={{ textAlign: "right" }}>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>
-                Срок
+                Muddat
               </div>
               <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", filter: "blur(5px)", userSelect: "none" }}>09/28</div>
             </div>
@@ -204,11 +204,11 @@ export default function CardPage() {
           marginBottom: 16,
         }}
       >
-        <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 6 }}>Доступный баланс</div>
+        <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 6 }}>Mavjud balans</div>
         <div style={{ fontSize: 36, fontWeight: 800, color: "#f0eaff", marginBottom: 4 }}>
-          {account ? `${formatBalance(account.balance)} ₽` : "..."}
+          {account ? `${formatBalance(account.balance)} сум` : "..."}
         </div>
-        <div style={{ fontSize: 12, color: "#a78bcc" }}>Обновляется в реальном времени</div>
+        <div style={{ fontSize: 12, color: "#a78bcc" }}>Real vaqtda yangilanadi</div>
       </div>
 
       {/* Card info rows */}
@@ -222,10 +222,10 @@ export default function CardPage() {
         }}
       >
         {[
-          { label: "Тип карты", value: "VISA Platinum" },
-          { label: "Статус", value: "✓ Активна" },
-          { label: "Кэшбэк", value: "До 5%" },
-          { label: "Лимит", value: "500 000 ₽" },
+          { label: "Karta turi", value: "VISA Platinum" },
+          { label: "Holati", value: "✓ Faol" },
+          { label: "Cashback", value: "5% gacha" },
+          { label: "Limit", value: "5 000 000 сум" },
         ].map((row, i) => (
           <div
             key={row.label}
@@ -263,7 +263,7 @@ export default function CardPage() {
             opacity: loadingQR ? 0.7 : 1,
           }}
         >
-          {loadingQR ? "Создание QR..." : "💳 Пополнить счёт"}
+          {loadingQR ? "QR yaratilmoqda..." : "💳 Hisobni to'ldirish"}
         </button>
       ) : (
         /* QR panel */
@@ -277,10 +277,10 @@ export default function CardPage() {
           }}
         >
           <div style={{ fontSize: 15, fontWeight: 700, color: "#c4b5fd", marginBottom: 6 }}>
-            QR-код для пополнения
+            To'ldirish uchun QR-kod
           </div>
           <div style={{ fontSize: 12, color: "#a78bcc", marginBottom: 20 }}>
-            Отсканируй с другого телефона, введи сумму — и деньги придут на этот счёт
+            Boshqa telefondan skaner qiling, summani kiriting — pul ushbu hisobga tushadi
           </div>
 
           {qrImageUrl && (
@@ -297,7 +297,7 @@ export default function CardPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={qrImageUrl}
-                alt="QR для пополнения"
+                alt="To'ldirish uchun QR"
                 width={200}
                 height={200}
                 style={{ display: "block", borderRadius: 8 }}
@@ -343,7 +343,7 @@ export default function CardPage() {
                 fontWeight: 600,
               }}
             >
-              {copied ? "✓" : "Копировать"}
+              {copied ? "✓" : "Nusxalash"}
             </button>
           </div>
 

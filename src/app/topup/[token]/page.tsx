@@ -79,7 +79,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
           <div style={{ fontSize: 16, color: "#a78bcc", marginBottom: 28 }}>
             На счёт зачислено{" "}
             <span style={{ color: "#a3e635", fontWeight: 700 }}>
-              +{formatMoney(parseFloat(amount))} ₽
+              +{formatMoney(parseFloat(amount))} сум
             </span>
           </div>
           {newBalance !== null && (
@@ -96,7 +96,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
                 Новый баланс счёта
               </div>
               <div style={{ fontSize: 28, fontWeight: 800, color: "#c4b5fd" }}>
-                {formatMoney(newBalance)} ₽
+                {formatMoney(newBalance)} сум
               </div>
             </div>
           )}
@@ -179,7 +179,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
               }}
             />
             <span style={{ fontSize: 28, color: "#a78bcc", fontWeight: 700, flexShrink: 0 }}>
-              ₽
+              сум
             </span>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
                 cursor: "pointer",
               }}
             >
-              {preset.toLocaleString("ru-RU")} ₽
+              {preset.toLocaleString("ru-RU")} сум
             </button>
           ))}
         </div>
