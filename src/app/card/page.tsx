@@ -171,7 +171,7 @@ export default function CardPage() {
             }}
           />
 
-          <div style={{ fontSize: 18, color: "rgba(255,255,255,0.9)", letterSpacing: 3, marginBottom: 20 }}>
+          <div style={{ fontSize: 18, color: "rgba(255,255,255,0.9)", letterSpacing: 3, marginBottom: 20, filter: "blur(6px)", userSelect: "none" }}>
             {account?.cardNumber ?? "•••• •••• •••• ••••"}
           </div>
 
@@ -180,7 +180,7 @@ export default function CardPage() {
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>
                 Держатель
               </div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", filter: "blur(5px)", userSelect: "none" }}>
                 {account?.name?.toUpperCase() ?? "..."}
               </div>
             </div>
@@ -188,7 +188,7 @@ export default function CardPage() {
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>
                 Срок
               </div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>09/28</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", filter: "blur(5px)", userSelect: "none" }}>09/28</div>
             </div>
           </div>
         </div>
