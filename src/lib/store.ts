@@ -29,7 +29,7 @@ function initStore() {
         id: "main",
         name: "",
         cardNumber: "4276 8001 1234 5678",
-        balance: 1250000,
+        balance: 150000,
       },
       topupTokens: new Map(),
     };
@@ -66,4 +66,10 @@ export function createTopupToken(accountId: string): string {
 
 export function getTopupToken(token: string): TopupToken | undefined {
   return initStore().topupTokens.get(token);
+}
+
+export function resetBalance(): Account {
+  const store = initStore();
+  store.account.balance = 150000;
+  return store.account;
 }

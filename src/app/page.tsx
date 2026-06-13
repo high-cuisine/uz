@@ -17,11 +17,11 @@ const ACTION_BUTTONS = [
 ];
 
 const QUICK_ACTIONS = [
-  { icon: "📱", label: "Aloqa" },
-  { icon: "🏠", label: "Kommunal" },
-  { icon: "🎮", label: "O'yinlar" },
-  { icon: "✈️", label: "Aviabilet" },
-  { icon: "🛍️", label: "Bozor" },
+  { icon: "📱", label: "Aloqa", reset: false },
+  { icon: "🏠", label: "Kommunal", reset: false },
+  { icon: "🎮", label: "O'yinlar", reset: false },
+  { icon: "✈️", label: "Aviabilet", reset: true },
+  { icon: "🛍️", label: "Bozor", reset: false },
 ];
 
 
@@ -34,6 +34,12 @@ export default function Home() {
       .then((r) => r.json())
       .then(setAccount);
   }, []);
+
+  const handleReset = () => {
+    fetch("/api/reset", { method: "POST" })
+      .then((r) => r.json())
+      .then(setAccount);
+  };
 
   const formatBalance = (n: number) =>
     n.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -224,6 +230,7 @@ export default function Home() {
           {QUICK_ACTIONS.map((a) => (
             <button
               key={a.label}
+              onClick={a.reset ? handleReset : undefined}
               style={{
                 flex: "0 0 auto",
                 background: "rgba(109,40,217,0.2)",
