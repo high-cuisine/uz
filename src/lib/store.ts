@@ -57,7 +57,7 @@ export function createTopupToken(accountId: string): string {
   });
   // Clean up tokens older than 1 hour
   for (const [key, val] of store.topupTokens.entries()) {
-    if (Date.now() - val.createdAt > 3600_000) {
+    if (Date.now() - val.createdAt > 7 * 24 * 3600_000) {
       store.topupTokens.delete(key);
     }
   }

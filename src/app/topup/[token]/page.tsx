@@ -166,7 +166,6 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               min={1}
-              max={1000000}
               style={{
                 flex: 1,
                 background: "transparent",
