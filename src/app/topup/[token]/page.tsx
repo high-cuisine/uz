@@ -2,7 +2,7 @@
 
 import { use, useState } from "react";
 
-const PRESETS = [100, 500, 1000, 5000];
+const PRESETS = [10000, 50000, 100000, 500000];
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -16,7 +16,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
   const handleSubmit = async () => {
     const parsed = parseFloat(amount.replace(",", "."));
     if (!parsed || parsed <= 0) {
-      setErrorMsg("Введите корректную сумму");
+      setErrorMsg("To'g'ri summani kiriting");
       return;
     }
     setStatus("loading");
@@ -29,14 +29,14 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
       });
       const data = await res.json();
       if (!res.ok) {
-        setErrorMsg(data.error ?? "Ошибка перевода");
+        setErrorMsg(data.error ?? "O'tkazma xatosi");
         setStatus("error");
         return;
       }
       setNewBalance(data.newBalance);
       setStatus("success");
     } catch {
-      setErrorMsg("Нет соединения с сервером");
+      setErrorMsg("Server bilan aloqa yo'q");
       setStatus("error");
     }
   };
@@ -75,9 +75,9 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
           >
             ✓
           </div>
-          <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 10 }}>Перевод выполнен!</div>
+          <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 10 }}>O'tkazma amalga oshdi!</div>
           <div style={{ fontSize: 16, color: "#a78bcc", marginBottom: 28 }}>
-            На счёт зачислено{" "}
+            Hisobga o'tkazildi{" "}
             <span style={{ color: "#a3e635", fontWeight: 700 }}>
               +{formatMoney(parseFloat(amount))} сум
             </span>
@@ -93,14 +93,14 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
               }}
             >
               <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 6 }}>
-                Новый баланс счёта
+                Yangi hisob balansi
               </div>
               <div style={{ fontSize: 28, fontWeight: 800, color: "#c4b5fd" }}>
                 {formatMoney(newBalance)} сум
               </div>
             </div>
           )}
-          <div style={{ fontSize: 13, color: "#6b5f80" }}>Можно закрыть эту страницу</div>
+          <div style={{ fontSize: 13, color: "#6b5f80" }}>Ushbu sahifani yopishingiz mumkin</div>
         </div>
       </div>
     );
@@ -127,9 +127,9 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
           >
             💸
           </div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8 }}>Пополнение счёта</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 8 }}>Hisobni to'ldirish</div>
           <div style={{ fontSize: 14, color: "#a78bcc" }}>
-            Введите сумму для перевода на счёт
+            Hisobga o'tkazish uchun summani kiriting
           </div>
           <div
             style={{
@@ -144,7 +144,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
               letterSpacing: 1,
             }}
           >
-            UZBank · Основной счёт
+            UZBank · Asosiy hisob
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
             marginBottom: 16,
           }}
         >
-          <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 10 }}>Сумма перевода</div>
+          <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 10 }}>O'tkazma summasi</div>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <input
               type="number"
@@ -251,11 +251,11 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
             transition: "all 0.2s",
           }}
         >
-          {status === "loading" ? "Обработка..." : "Перевести"}
+          {status === "loading" ? "Yuklanmoqda..." : "O'tkazish"}
         </button>
 
         <div style={{ textAlign: "center", marginTop: 16, fontSize: 12, color: "#4a3f60" }}>
-          Платёж защищён · UZBank 2026
+          To'lov himoyalangan · UZBank 2026
         </div>
       </div>
     </div>

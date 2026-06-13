@@ -366,7 +366,7 @@ export default function CardPage() {
                 cursor: "pointer",
               }}
             >
-              Закрыть
+              Yopish
             </button>
             <button
               onClick={handleTopup}
@@ -382,7 +382,7 @@ export default function CardPage() {
                 cursor: "pointer",
               }}
             >
-              Обновить QR
+              QR yangilash
             </button>
           </div>
         </div>

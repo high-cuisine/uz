@@ -73,7 +73,7 @@ export default function Home() {
       <div style={s.header}>
         <div>
           <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 2 }}>Xush kelibsiz</div>
-          <div style={{ fontSize: 18, fontWeight: 700 }}>{account?.name ?? "..."}</div>
+          <div style={{ fontSize: 18, fontWeight: 700 }}>UZBank</div>
         </div>
         <div style={s.avatar}>👤</div>
       </div>
