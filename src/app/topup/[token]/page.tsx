@@ -144,7 +144,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
               letterSpacing: 1,
             }}
           >
-            UZBank · Asosiy hisob
+             · Asosiy hisob
           </div>
         </div>
 
@@ -254,7 +254,7 @@ export default function TopupPage({ params }: { params: Promise<{ token: string 
         </button>
 
         <div style={{ textAlign: "center", marginTop: 16, fontSize: 12, color: "#4a3f60" }}>
-          To'lov himoyalangan · UZBank 2026
+          To'lov himoyalangan ·  2026
         </div>
       </div>
     </div>
