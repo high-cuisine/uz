@@ -1,12 +1,54 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import Link from "next/link";
 
 interface Account {
   name: string;
   cardNumber: string;
   balance: number;
+}
+
+function useAnimatedBalance(target: number | null) {
+  const [displayed, setDisplayed] = useState<number | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const startRef = useRef<{ from: number; to: number; startTime: number } | null>(null);
+
+  useEffect(() => {
+    if (target === null) return;
+
+    // First load — show immediately, no animation
+    if (displayed === null) {
+      setDisplayed(target);
+      return;
+    }
+
+    if (target === displayed) return;
+
+    const from = displayed;
+    const to = target;
+    const duration = Math.min(1200, Math.abs(to - from) / 500 * 1000 + 400);
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    startRef.current = { from, to, startTime: performance.now() };
+
+    function tick(now: number) {
+      const s = startRef.current!;
+      const progress = Math.min((now - s.startTime) / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayed(Math.round(s.from + (s.to - s.from) * eased));
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    }
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [target]);
+
+  return displayed;
 }
 
 export default function CardPage() {
@@ -17,6 +59,8 @@ export default function CardPage() {
   const [loadingQR, setLoadingQR] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const animatedBalance = useAnimatedBalance(account?.balance ?? null);
+
   const fetchAccount = useCallback(() => {
     fetch("/api/balance")
       .then((r) => r.json())
@@ -25,7 +69,6 @@ export default function CardPage() {
 
   useEffect(() => {
     fetchAccount();
-    // Poll balance every 3 seconds to catch top-ups from other devices
     const interval = setInterval(fetchAccount, 3000);
     return () => clearInterval(interval);
   }, [fetchAccount]);
@@ -206,7 +249,7 @@ export default function CardPage() {
       >
         <div style={{ fontSize: 13, color: "#a78bcc", marginBottom: 6 }}>Mavjud balans</div>
         <div style={{ fontSize: 36, fontWeight: 800, color: "#f0eaff", marginBottom: 4 }}>
-          {account ? `${formatBalance(account.balance)} сум` : "..."}
+          {animatedBalance !== null ? `${formatBalance(animatedBalance)} сум` : "..."}
         </div>
         <div style={{ fontSize: 12, color: "#a78bcc" }}>Real vaqtda yangilanadi</div>
       </div>
