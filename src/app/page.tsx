@@ -24,13 +24,6 @@ const QUICK_ACTIONS = [
   { icon: "🛍️", label: "Маркет" },
 ];
 
-const TRANSACTIONS = [
-  { id: 1, name: "Магнит", amount: -1240, time: "Сегодня, 14:32", icon: "🛒" },
-  { id: 2, name: "Яндекс.Такси", amount: -380, time: "Сегодня, 11:15", icon: "🚗" },
-  { id: 3, name: "Netflix", amount: -899, time: "Вчера, 09:00", icon: "🎬" },
-  { id: 4, name: "Перевод от Артёма", amount: 5000, time: "Вчера, 16:44", icon: "💸" },
-  { id: 5, name: "Wildberries", amount: -3200, time: "13 июн, 20:01", icon: "📦" },
-];
 
 export default function Home() {
   const [account, setAccount] = useState<Account | null>(null);
@@ -255,81 +248,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Transactions */}
-      <div style={{ padding: "0 20px" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 14,
-          }}
-        >
-          <div style={{ fontSize: 14, fontWeight: 700, color: "#c4b5fd" }}>Последние операции</div>
-          <button
-            style={{
-              background: "none",
-              border: "none",
-              color: "#a855f7",
-              fontSize: 12,
-              cursor: "pointer",
-              fontWeight: 600,
-            }}
-          >
-            Все →
-          </button>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {TRANSACTIONS.map((tx) => (
-            <div
-              key={tx.id}
-              style={{
-                background: "rgba(109,40,217,0.12)",
-                border: "1px solid rgba(168,85,247,0.15)",
-                borderRadius: 16,
-                padding: "14px 16px",
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-              }}
-            >
-              <div
-                style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 12,
-                  background: "rgba(109,40,217,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 22,
-                  flexShrink: 0,
-                }}
-              >
-                {tx.icon}
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 600, color: "#f0eaff", marginBottom: 2 }}>
-                  {tx.name}
-                </div>
-                <div style={{ fontSize: 12, color: "#a78bcc" }}>{tx.time}</div>
-              </div>
-              <div
-                style={{
-                  fontSize: 15,
-                  fontWeight: 700,
-                  color: tx.amount > 0 ? "#a3e635" : "#f0eaff",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {tx.amount > 0 ? "+" : ""}
-                {tx.amount.toLocaleString("ru-RU")} ₽
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Bottom Nav */}
       <div
