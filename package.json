@@ -6,6 +6,7 @@
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
     "build": "next build",
+    "postbuild": "cp -r public .next/standalone/ && mkdir -p .next/standalone/.next && cp -r .next/static .next/standalone/.next/",
     "start": "node .next/standalone/server.js",
     "lint": "eslint"
   },
